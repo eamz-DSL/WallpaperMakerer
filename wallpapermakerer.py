@@ -21,11 +21,16 @@ def generate_collage(input_folder, output_file):
         # Randomize size and position
         width, height = img.size
         max_resize_factor = min(1920 / width, 1080 / height, 1)  # Calculate max resize factor
-        resize_factor = random.uniform(0.2, max_resize_factor)  # Random resize factor between 0.2 and max_resize_factor
+        resize_factor = random.uniform(0.01, max_resize_factor)  # Random resize factor between 0.01 and max_resize_factor
         new_width = int(width * resize_factor)
         new_height = int(height * resize_factor)
-        x_pos = random.randint(0, collage.width - new_width)
-        y_pos = random.randint(0, collage.height - new_height)
+        
+        # Calculate the maximum position where the image can be placed to extend beyond the edges
+        max_x_pos = collage.width - new_width + int(0.1 * new_width)  # Allow 10% of the image width to extend beyond the right edge
+        max_y_pos = collage.height - new_height + int(0.1 * new_height)  # Allow 10% of the image height to extend beyond the bottom edge
+        
+        x_pos = random.randint(-int(0.1 * new_width), max_x_pos)  # Allow negative x_pos to extend beyond the left edge
+        y_pos = random.randint(-int(0.1 * new_height), max_y_pos)  # Allow negative y_pos to extend beyond the top edge
 
         # Resize the image
         img = img.resize((new_width, new_height))
@@ -42,6 +47,6 @@ def generate_collage(input_folder, output_file):
 
 if __name__ == "__main__":
     input_folder = "INPUT HERE"  # Change this to the path of your input folder
-    output_file = os.path.expanduser("OUTPUT HERE.png")  # Output file will be saved on the desktop
+    output_file = os.path.expanduser("OUPUT HERE .png")  # Output file will be saved on the desktop
 
     generate_collage(input_folder, output_file)
