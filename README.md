@@ -4,7 +4,6 @@ Easily take a folder of images and collage them for sleek and fun desktop wallpa
 
 ---
 
-# Wallpaper Maker
 
 ## Overview
 
