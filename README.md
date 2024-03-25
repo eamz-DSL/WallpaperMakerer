@@ -1,7 +1,6 @@
 # WallpaperMakerer
 Easily take a folder of images and collage them for sleek and fun desktop wallpapers
 
-Certainly! Here's a modern and sleek README for your Python script:
 
 ---
 
